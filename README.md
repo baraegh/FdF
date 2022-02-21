@@ -1,5 +1,5 @@
 # Fdf
-This project is about creating a simple wireframe model of a landscape.
+This project is about creating a simple wireframe model representation of a 3D landscape by linking various points (x, y, z)
 
 ## Ressources
 - [Minilibx doc (1)](https://harm-smits.github.io/42docs/libs/minilibx.html)
