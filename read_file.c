@@ -1,11 +1,41 @@
 
 #include "header.h"
 
-int	get_heigth(char *file_path)
+int	get_width(char *s)
+{
+	char	**tmp;
+	int		width;
+
+	tmp = ft_split(s, ' ');
+	width = 0;
+	while (tmp[width])
+	{
+		free(tmp[width]);
+		width++;
+	}
+	free(tmp);
+	return (width);
+}
+
+int	get_heigth(int fd, char *line)
+{
+	int	heigth;
+
+	heigth = 0;
+	while (line != NULL)
+	{
+		heigth++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	return(heigth);
+}
+
+int	set_heigth_width(t_data *data, char *file_path)
 {
 	int		fd;
-	int		heigth;
 	char	*line;
+	(void) data;
 
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
@@ -14,55 +44,24 @@ int	get_heigth(char *file_path)
 		close(fd);
 		return (0);
 	}
-	heigth = 0;
-	while (line != NULL)
-	{
-		free(line);
-		heigth++;
-		line = get_next_line(fd);
-	}
-	free(line);
+	data->width = get_width(line);
+	data->heigth = get_heigth(fd, line);
 	close(fd);
-	return (heigth);
+	return (1);
 }
 
-int	get_width(char *file_path)
-{
-	int		fd;
-	char	*line;
-	int		width;
-	char	**tmp;
-
-	fd = open(file_path, O_RDONLY);
-	line = get_next_line(fd);
-	tmp = ft_split(line, ' ');
-	if (!tmp)
-	{
-		free(line);
-		close(fd);
-		return (0);
-	}
-	width = 0;
-	while (tmp[width] != NULL)
-		width++;
-	free(tmp);
-	free(line);
-	close(fd);
-	return (width);
-}
-
-char	***get_matrix(char * file_path, t_data *data)
+char	***set_matrix(char * file_path, t_data *data)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
 	fd = open(file_path, O_RDONLY);
-	data->z_matrix = (char ***)malloc(sizeof(char **) * data->height + 1);
+	data->z_matrix = (char ***)malloc(sizeof(char **) * data->heigth + 1);
 	// if (!data->z_matrix)
 		/*return*/
 	i = 0;
-	while (i < data->height)
+	while (i < data->heigth)
 	{
 		line = get_next_line(fd);
 		// if (!line)
@@ -78,13 +77,10 @@ char	***get_matrix(char * file_path, t_data *data)
 
 void	read_file(t_data *data, char *file_path)
 {
-	data->width = get_width(file_path);
-	// if (data->width == 0)
-		// return
-	data->height = get_heigth(file_path);
-	// if (data->heigth == 0)
-		// return
-	get_matrix(file_path, data);
+	set_heigth_width(data, file_path);
+	// if (get_heigth_width(data, file_path))
+	// 	return
+	set_matrix(file_path, data);
 	// if (!data->z_matrix)
 		// return
 }
