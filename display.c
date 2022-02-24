@@ -27,7 +27,12 @@ int get_diplay(t_data *data)
 int	display(t_data data)
 {
 	if (!get_diplay(&data))
+	{
+		// mlx_destroy_image(data.mlx_ptr, &data.img);
+		// mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+		// free(data.mlx_ptr);
         return (0);
+	}
 	render(&data);
 	// mlx_loop_hook(data.mlx_ptr, &render, &data);
 	// mlx_hook(data.win_ptr, EVENT_KEY_PRESS, KeyPressMask, &handle_keypress, &data);

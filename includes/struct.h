@@ -15,8 +15,10 @@ typedef struct s_img
 typedef struct s_data
 {
 	int		width;
-	int		height;
+	int		heigth;
 	char	***z_matrix;
+	int		zoom;
+	// int		color;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
@@ -27,8 +29,17 @@ typedef struct s_point
 	int	x;
 	int	y;
 	int	z;
-	// int	color;
+	int	color;
 } t_point;
+
+typedef struct s_var
+{
+	int dx;
+	int dy;
+	int step_x;
+	int step_y;
+} t_var;
+
 
 typedef struct s_rect
 {

@@ -2,11 +2,10 @@
 
 #include "header.h"
 
-// void	img_pix_put(t_img *img, int x, int y, int color)
+// void	img_pix_put(t_img *img, t_point p, int color)
 // {
-// 	char    *pixel;
-
-//  pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+// 	char	*pixel;
+// 	pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
 // 	*(int *)pixel = color;
 // }
 
@@ -14,9 +13,9 @@ void	img_pix_put(t_img *img, t_point p, int color)
 {
 	char    *pixel;
 	int		i;
-	
+
 	i = img->bpp - 8;
-    pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
+	pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
 	while (i >= 0)
 	{
 		/* big endian, MSB is the leftmost bit */
@@ -36,6 +35,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		read_file(&data, av[1]);
+		data.zoom = 30;
 		if (display(data))
 			return (0);
 	}

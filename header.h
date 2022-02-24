@@ -17,6 +17,8 @@
 
 # define W_WIDTH 1000
 # define W_HEIGHT 1000
+# define COLOR 0xB8405E
+# define COLOR_Z 0xEEE6CE
 # define ERROR -1
 
 
@@ -27,7 +29,8 @@ void	img_pix_put(t_img *img, t_point p, int color);
 int		handle_no_event(void *data);
 int		handle_input(int keysym, t_data *data);
 int		handle_mouse(int x, int y, void *data);
-int		draw_line_bresenham(t_img *img, t_point b_p, t_point e_p, int color);
+void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p);
 void	isometric_proj(t_point	*p);
+void	render_map(t_data *data);
 
 #endif

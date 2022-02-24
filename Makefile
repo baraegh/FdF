@@ -3,7 +3,8 @@
 NAME = fdf
 
 SRCS = fdf.c render.c hooks.c draw_line.c get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c read_file.c  display.c\
+		get_next_line/get_next_line_utils.c read_file.c  display.c \
+		render_map.c
 
 
 

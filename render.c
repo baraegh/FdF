@@ -13,7 +13,7 @@ int	render_background(t_img *img, int color)
 		j = 0;
 		while (j < W_WIDTH)
 		{
-			img_pix_put(img, (t_point){j++, i, 500}, color);
+			img_pix_put(img, (t_point){j++, i, 0, 0}, color);
 		}
 		i++;
 	}
@@ -22,12 +22,8 @@ int	render_background(t_img *img, int color)
 
 void	isometric_proj(t_point	*p)
 {
-	t_point	tmp_p;
-
-	tmp_p.x = p->x;
-	tmp_p.y = p->y;
-	p->x = (tmp_p.x - tmp_p.y) * cos(0.523599);
-	p->y = (tmp_p.x + tmp_p.y) * sin(0.523599) - p->z;
+	p->x = (p->x - p->y) * cos(0.523599);
+	p->y = (p->x + p->y) * sin(0.523599) - p->z;
 }
 
 int	render(t_data *data)
@@ -35,7 +31,7 @@ int	render(t_data *data)
 	if (data->win_ptr == NULL)
 		return (0);
 	render_background(&data->img, 0x313552);
-	draw_line_bresenham(&data->img, (t_point){500, 285, 0}, (t_point){500, 720, 0}, 0x2EB086);
+	render_map(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 	return (1);
 }
