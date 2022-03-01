@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_file.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/27 16:27:13 by eel-ghan          #+#    #+#             */
+/*   Updated: 2022/03/01 02:23:09 by eel-ghan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "header.h"
 
@@ -31,7 +42,7 @@ int	get_heigth(int fd, char *line)
 	return(heigth);
 }
 
-int	set_heigth_width(t_data *data, char *file_path)
+int	get_heigth_width(t_data *data, char *file_path)
 {
 	int		fd;
 	char	*line;
@@ -44,8 +55,8 @@ int	set_heigth_width(t_data *data, char *file_path)
 		close(fd);
 		return (0);
 	}
-	data->width = get_width(line);
-	data->heigth = get_heigth(fd, line);
+	data->map.width = get_width(line);
+	data->map.heigth = get_heigth(fd, line);
 	close(fd);
 	return (1);
 }
@@ -57,16 +68,16 @@ char	***set_matrix(char * file_path, t_data *data)
 	int		i;
 
 	fd = open(file_path, O_RDONLY);
-	data->z_matrix = (char ***)malloc(sizeof(char **) * data->heigth + 1);
+	data->z_matrix = (char ***)malloc(sizeof(char **) * data->map.heigth + 1);
 	// if (!data->z_matrix)
 		/*return*/
 	i = 0;
-	while (i < data->heigth)
+	while (i < data->map.heigth)
 	{
 		line = get_next_line(fd);
 		// if (!line)
 			// 	return
-		data->z_matrix[i] = (char **)malloc(sizeof(char *) * data->width + 1);
+		data->z_matrix[i] = (char **)malloc(sizeof(char *) * data->map.width + 1);
 		data->z_matrix[i] = ft_split(line, ' ');
 		free(line);
 		i++;
@@ -77,9 +88,11 @@ char	***set_matrix(char * file_path, t_data *data)
 
 void	read_file(t_data *data, char *file_path)
 {
-	set_heigth_width(data, file_path);
+	get_heigth_width(data, file_path);
 	// if (get_heigth_width(data, file_path))
 	// 	return
+	data->zoom = FT_MIN(WIDTH / data->map.width / 2,
+		HEIGHT / data->map.heigth / 2);
 	set_matrix(file_path, data);
 	// if (!data->z_matrix)
 		// return
