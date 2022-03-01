@@ -23,6 +23,7 @@ FRAMEWORKS = -framework OpenGl -framework Appkit
 ${NAME} : ${OBJS}
 			cd libft && make && make clean && cd .. 
 			${CC} ${MLX} ${FRAMEWORKS} -o ${NAME} ${OBJS} libft/libft.a -g
+			make clean
 		
 all:	${NAME}
 	
