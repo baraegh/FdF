@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/27 16:27:01 by eel-ghan          #+#    #+#             */
+/*   Updated: 2022/03/01 02:22:53 by eel-ghan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "header.h"
 
@@ -28,23 +38,6 @@ void	img_pix_put(t_img *img, t_point p, int color)
 	}
 }
 
-void	get_data_zoom(t_data *data)
-{
-	if (data->heigth <= 21)
-		data->zoom = 20;
-	else if (data->heigth <= 101 
-		&& data->heigth > 21)
-		data->zoom= 10;
-	else if (data->heigth <= 150 
-		&& data->heigth > 101)
-		data->zoom = 5;
-	else if (data->heigth <= 501 
-		&& data->heigth > 150)
-		data->zoom = 2;
-	else
-		data->zoom = 1;
-}
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -52,8 +45,8 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		read_file(&data, av[1]);
-		get_data_zoom(&data);
-		if (display(data))
+		printf("w: %d, h: %d zoom: %d\n", data.map.width, data.map.heigth, data.zoom);
+		if (display(data, av[1]))
 			return (0);
 	}
 	return (0);
