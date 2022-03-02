@@ -4,7 +4,7 @@ NAME = fdf
 
 SRCS = fdf.c render.c hooks.c draw_line.c get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c read_file.c  display.c \
-		render_map.c
+		render_map.c color.c
 
 
 
@@ -23,7 +23,6 @@ FRAMEWORKS = -framework OpenGl -framework Appkit
 ${NAME} : ${OBJS}
 			cd libft && make && make clean && cd .. 
 			${CC} ${MLX} ${FRAMEWORKS} -o ${NAME} ${OBJS} libft/libft.a -g
-			make clean
 		
 all:	${NAME}
 	

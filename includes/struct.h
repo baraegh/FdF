@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:00 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/01 03:01:54 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:40:41 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ typedef struct s_data
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
-	int	color_is_set;
+	int		x;
+	int		y;
+	int		z;
+	char	*color;
+	int		color_is_set;
 } t_point;
 
 typedef struct s_var
@@ -57,23 +57,11 @@ typedef struct s_var
 	int step_y;
 } t_var;
 
-
-typedef struct s_rect
+typedef struct s_rgb
 {
-	t_point	p;
-	int		width;
-	int		height;
-	int		color;
-} t_rect;
-
-typedef struct s_triangle
-{
-	t_point	p0;
-	t_point	p1;
-	t_point	p2;
-	int		height;
-	int		color;
-} t_triangle;
-
+	int	r;
+	int	g;
+	int	b;
+} t_rgb;
 
 # endif
