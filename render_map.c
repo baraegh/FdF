@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:19 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/01 03:20:07 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:47:28 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ t_point	get_point(t_data *data, int x, int y, char *s)
 
 	p.x = x;
 	p.y = y;
+	p.color_is_set = 0;
 	if (ft_strchr(s, ','))
 	{
 		str = ft_split(s, ',');
 		p.z = ft_atoi(str[0]);
-		p.color = (int)str[1];
+		p.color = str[1];
+		p.color_is_set = 1;
 	}
 	else
-	{
 		p.z = ft_atoi(s);
-		p.color = DEFAULT_COLOR;
-	}
 	p.x *= data->zoom;
 	p.y *= data->zoom;
+	p.z *= data->zoom;
 	isometric_proj(&p, data);
 	p.x += WIDTH / 3;
 	p.y += HEIGHT / 3;
