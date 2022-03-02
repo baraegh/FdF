@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:25:32 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/01 02:27:40 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 22:44:58 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ int get_diplay(t_data *data, char* file_path)
 int	display(t_data data, char* file_path)
 {
 	if (!get_diplay(&data, file_path))
-	{
-		// mlx_destroy_image(data.mlx_ptr, &data.img);
-		// mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-		// free(data.mlx_ptr);
-        return (0);
-	}
+		terminate(ERR_DISPLAY);
 	render(&data);
 	// mlx_loop_hook(data.mlx_ptr, &render, &data);
 	// mlx_hook(data.win_ptr, EVENT_KEY_PRESS, KeyPressMask, &handle_keypress, &data);
@@ -52,8 +47,6 @@ int	display(t_data data, char* file_path)
 	mlx_loop(data.mlx_ptr);
 	mlx_destroy_image(data.mlx_ptr, &data.img);
 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-	/* we will exit the loop if there's no window left, and execute this code */
-	// mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 	return (1);
 }

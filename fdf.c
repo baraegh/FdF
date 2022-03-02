@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:01 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 01:48:33 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:06:01 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
+		if (open(av[1], O_RDONLY) == -1)
+			terminate(ERR_MAP_READING);
 		read_file(&data, av[1]);
-		printf("w: %d, h: %d zoom: %d\n", data.map.width, data.map.heigth, data.zoom);
 		if (display(data, av[1]))
-			return (0);
+			terminate(ERR_MAP_READING);
 	}
+	else
+		terminate(ERR_USAGE);
 	return (0);
 }
