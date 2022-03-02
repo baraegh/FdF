@@ -12,19 +12,9 @@
 
 #include "header.h"
 
-int	get_color(t_point b_p, t_point e_p)
-{
-	(void) e_p;
-
-	if (b_p.color_is_set == 0)
-		return (COLOR);
-	return (b_p.color);
-}
-
-t_var	set_values(t_data *data, t_point *b_p, t_point *e_p)
+t_var	set_values(t_point *b_p, t_point *e_p)
 {	
 	t_var var;
-	(void) data;
 	
 	var.dx = abs(e_p->x - b_p->x);
 	var.dy = -abs(e_p->y - b_p->y);
@@ -43,12 +33,11 @@ void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p)
 	int		err;
 	int		err_i;
 
-	var = set_values(data, &b_p, &e_p);
+	var = set_values(&b_p, &e_p);
 	err = var.dx + var.dy;
 	while (1)
 	{
-		// printf("color: %d\n", b_p.color);
-		img_pix_put(&data->img, b_p, b_p.color);
+		img_pix_put(&data->img, b_p, get_color(b_p, e_p));
 		err_i = 2 * err;
 		if (err_i >= var.dy)
 		{
