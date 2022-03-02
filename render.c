@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:25 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/01 03:04:18 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:26:48 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	isometric_proj(t_point	*p, t_data *data)
 	(void) data;
 
 	p->x = (p->x - p->y) * cos(0.8);
-	p->y = (p->x + p->y) * sin(0.8) - (p->z * data->zoom);
+	p->y = (p->x + p->y) * sin(0.8) - p->z;
 }
 
 int	render(t_data *data)
