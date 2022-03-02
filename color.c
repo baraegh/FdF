@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:58:46 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 01:26:22 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:03:42 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	hex_to_int(char *hex)
 	while (hex[i])
 	{
 		c = hex[i];
-		if (c >= '0' && c <= '9') 
+		if (c >= '0' && c <= '9')
 			c = c - '0';
-		else if (c >= 'a' && c <='f') 
+		else if (c >= 'a' && c <='f')
 			c = c - 'a' + 10;
-		else if (c >= 'A' && c <='F') 
+		else if (c >= 'A' && c <='F')
 			c = c - 'A' + 10;
 		color = (color << 4) | (c & 0xF);
 		i++;
@@ -44,5 +44,5 @@ int	get_color(t_point b_p, t_point e_p)
 	else if (b_p.color_is_set == 1)
 		return (hex_to_int(b_p.color));
 	else
-		return (DEFAULT_COLOR);	
+		return (DEFAULT_COLOR);
 }
