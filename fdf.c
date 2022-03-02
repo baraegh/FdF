@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:01 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/01 02:22:53 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/02 01:48:33 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 // void	img_pix_put(t_img *img, t_point p, int color)
 // {
 // 	char	*pixel;
-// 	pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
-// 	*(int *)pixel = color;
+
+// 	if (p.x < WIDTH & p.y >= 0 && p.y < HEIGHT)
+// 	{
+// 		pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
+// 		*(int *)pixel = color;
+// 	}
 // }
 
 void	img_pix_put(t_img *img, t_point p, int color)
@@ -24,17 +28,20 @@ void	img_pix_put(t_img *img, t_point p, int color)
 	char    *pixel;
 	int		i;
 
-	i = img->bpp - 8;
-	pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
-	while (i >= 0)
+	if (p.x < WIDTH & p.y >= 0 && p.y < HEIGHT)
 	{
-		/* big endian, MSB is the leftmost bit */
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		/* little endian, LSB is the leftmost bit */
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
+		i = img->bpp - 8;
+		pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));
+		while (i >= 0)
+		{
+			/* big endian, MSB is the leftmost bit */
+			if (img->endian != 0)
+				*pixel++ = (color >> i) & 0xFF;
+			/* little endian, LSB is the leftmost bit */
+			else
+				*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+			i -= 8;
+		}
 	}
 }
 
