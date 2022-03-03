@@ -6,24 +6,27 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:26:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/02/27 16:26:10 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/03 02:12:23 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	handle_no_event(void *data)
-{
-    (void)  data;
-	/* This function needs to exist, but it is useless for the moment */
-	return (0);
+int	close_window(t_data *data)
+{	
+	(void) data;
+
+	exit(0);
+	return (1);
 }
 
-int	handle_input(int keysym, t_data *data)
+int	handle_keypress(int key_code, t_data *data)
 {
-	if (keysym == KEY_ESC)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	return (0);
+	if (key_code == KEY_ESC)
+		close_window(data);
+	else if (key_code == KEY_PLUS || key_code == KEY_MINUS)
+		zoom(key_code, data);
+	return (1);
 }
 
 int	handle_mouse(int x, int y, void *data)
@@ -32,5 +35,12 @@ int	handle_mouse(int x, int y, void *data)
 	(void)	x;
 	(void)	y;
 	
-	return (0);
+	return (1);
+}
+
+void	hooks(int (*render)(t_data *), t_data data)
+{
+	mlx_loop_hook(data.mlx_ptr, render, &data);
+	mlx_hook(data.win_ptr, EVENT_KEY_PRESS, KEY_PRESS_MASK, &handle_keypress, &data);
+	mlx_hook(data.win_ptr, EVENT_CLOSE, 0, &close_window, &data);
 }
