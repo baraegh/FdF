@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:25:42 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 23:00:51 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:31:47 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@
 
 void	read_file(t_data *data, char *file_path);
 int		display(t_data data, char* file_path);
-void	render(t_data *data);
+int 	render(t_data *data);
 void	img_pix_put(t_img *img, t_point p, int color);
-int		handle_no_event(void *data);
-int		handle_input(int keysym, t_data *data);
 int		handle_mouse(int x, int y, void *data);
 void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p);
 void	render_map(t_data *data);
@@ -46,5 +44,7 @@ void	terminate(char *msg);
 void	free_arr(char **arr, char *msg);
 void	check_line(char *line, int fd);
 void	free_z_matrix(char ***matrix, char *line);
+void	hooks(int (*render)(t_data *), t_data data);
+void	zoom(int key_code, t_data *data);
 
 #endif

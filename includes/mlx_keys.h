@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/02/27 16:28:08 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/03 00:49:17 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@
 # define MOUSE_SCROLL_DOWN 5
 # define MOUSE_SCROLL_LEFT 6
 # define MOUSE_SCROLL_RIGHT 7
+
+/*
+**	Definine Some KeyboardKeyCodes
+*/
+
+# define NO_EVENT_MASK 0L
+# define KEY_PRESS_MASK (1L<<0)
+# define KEY_RELEASE_MASK (1L<<1)
+# define BUTTON_PRESS_MASK (1L<<2)
+# define BUTTON_RELESE_MASK (1L<<3)
 
 /*
 **	Definine Some KeyboardKeyCodes
@@ -99,15 +109,5 @@
 # define KEY_X 7
 # define KEY_Y 16
 # define KEY_Z 6
-
-/*
-**	Definine Some KeyboardKeyCodes
-*/
-
-# define NO_EVENT_MASK 0L
-# define KEY_PRESS_MASK (1L<<0)
-# define KEY_RELEASE_MASK (1L<<1)
-# define BUTTON_PRESS_MASK (1L<<2)
-# define BUTTON_RELESE_MASK (1L<<3)
 
 #endif

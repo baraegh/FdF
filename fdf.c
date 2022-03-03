@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:01 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 23:06:01 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:55:27 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	img_pix_put(t_img *img, t_point p, int color)
 	char    *pixel;
 	int		i;
 
-	if (p.x < WIDTH & p.y >= 0 && p.y < HEIGHT)
+	if (p.x >= 0 && p.x < WIDTH && p.y >= 0 && p.y < HEIGHT)
 	{
 		i = img->bpp - 8;
 		pixel = img->addr + (p.y * img->line_len + p.x * (img->bpp / 8));

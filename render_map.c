@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:19 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 23:01:04 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/03 01:58:45 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_point	get_point(t_data *data, int x, int y, char *s)
 	p.y *= data->zoom;
 	p.z *= data->zoom;
 	isometric_proj(&p);
-	p.x += WIDTH / 3;
+	p.x += WIDTH / 2;
 	p.y += HEIGHT / 3;
 	return (p);
 }
