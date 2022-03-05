@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:01 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 01:55:27 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 00:36:53 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,14 @@ void	img_pix_put(t_img *img, t_point p, int color)
 int	main(int ac, char **av)
 {
 	t_data	data;
+	int		fd;
 
 	if (ac == 2)
-	{
-		if (open(av[1], O_RDONLY) == -1)
+	{	
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
 			terminate(ERR_MAP_READING);
+		close(fd);
 		read_file(&data, av[1]);
 		if (display(data, av[1]))
 			terminate(ERR_MAP_READING);

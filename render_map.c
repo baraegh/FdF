@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:19 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 01:58:45 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:36:40 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@ void	isometric_proj(t_point	*p)
 t_point	get_point(t_data *data, int x, int y, char *s)
 {
 	t_point p;
-	char	**str = NULL;
 
+	data->str = NULL;
 	p.x = x;
 	p.y = y;
 	p.color_is_set = 0;
 	if (ft_strchr(s, ','))
 	{
-		str = ft_split(s, ',');
-		if (!str)
-			free_arr(str, ERR_RENDER);
-		p.z = ft_atoi(str[0]);
-		p.color = str[1];
+		data->str = ft_split(s, ',');
+		if (!data->str)
+			free_data(data, ERR_RENDER);
+		p.z = ft_atoi(data->str[0]);
+		p.color = hex_to_int(data->str[1]);
 		p.color_is_set = 1;
+		free_arr(data->str, NULL);
 	}
 	else
 		p.z = ft_atoi(s);

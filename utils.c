@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 02:16:54 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 22:59:13 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:25:33 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	check_line(char *line, int fd)
 	terminate(ERR_MAP);
 }
 
-void	free_z_matrix(char ***matrix, char *line)
+void	free_matrix(char ***matrix, char *line)
 {
 	int	i;
 	int	j;
@@ -63,10 +63,7 @@ void	free_z_matrix(char ***matrix, char *line)
 	{
 		j = 0;
 		while (matrix[i][j])
-		{
-			free(matrix[i][j]);
-			j++;
-		}
+			free(matrix[i][j++]);
 		free(matrix[i]);
 		i++;
 	}
@@ -74,4 +71,24 @@ void	free_z_matrix(char ***matrix, char *line)
 	if (line)
 		free(line);
 	terminate(ERR_SET_MATRIX);
+}
+
+void	free_data(t_data *data, char *msg)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->map.heigth)
+	{
+		j = 0;
+		while (j < data->map.width)
+			free(data->z_matrix[i][j++]);
+		free(data->z_matrix[i]);
+		i++;
+	}
+	free(data->z_matrix);
+	if (data->str)
+		free_arr(data->str, msg);
+	terminate(msg);
 }

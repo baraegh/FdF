@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:00 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 01:53:36 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:06:52 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	char	**str;
 }	t_data;
 
 typedef struct s_point
 {
-	int		x;
-	int		y;
-	int		z;
-	char	*color;
-	int		color_is_set;
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+	int	color_is_set;
 } t_point;
 
 typedef struct s_var

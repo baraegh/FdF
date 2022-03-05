@@ -55,4 +55,3 @@ void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p)
 		}
 	}
 }
-

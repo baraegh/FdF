@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:25 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 00:43:37 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:35:46 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	render_background(t_data *data, int color)
 	{
 		j = 0;
 		while (j < WIDTH)
-		{
 			img_pix_put(&data->img, (t_point){j++, i, 0, 0, 0}, color);
-		}
 		i++;
 	}
 	return (0);

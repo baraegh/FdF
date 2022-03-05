@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:58:46 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/02 23:03:42 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:06:15 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_color(t_point b_p, t_point e_p)
 	if (b_p.z != 0 && b_p.color_is_set == 0)
 		return (Z_COLOR);
 	else if (b_p.color_is_set == 1)
-		return (hex_to_int(b_p.color));
+		return (b_p.color);
 	else
 		return (DEFAULT_COLOR);
 }

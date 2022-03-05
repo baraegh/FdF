@@ -6,14 +6,14 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:26:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 02:12:23 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:14:22 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 int	close_window(t_data *data)
-{	
+{
 	(void) data;
 
 	exit(0);

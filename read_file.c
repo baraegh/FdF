@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:13 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 01:53:42 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:20:43 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	get_width(char *s)
 int	get_heigth(int fd, char *line, int width)
 {
 	int	heigth;
-	(void) width;
 	
 	heigth = 0;
 	while (line != NULL)
@@ -56,7 +55,6 @@ void	get_heigth_width(t_data *data, char *file_path)
 {
 	int		fd;
 	char	*line;
-	(void) data;
 
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
@@ -81,11 +79,10 @@ char	***set_matrix(char * file_path, t_data *data)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			free_z_matrix(data->z_matrix, line);
-		data->z_matrix[i] = (char **)malloc(sizeof(char *) * data->map.width + 1);
-		if (!data->z_matrix[i])
-			free_z_matrix(data->z_matrix, line);
+			free_matrix(data->z_matrix, line);
 		data->z_matrix[i] = ft_split(line, ' ');
+		if (!data->z_matrix[i])
+			free_matrix(data->z_matrix, ERR_RENDER); 
 		free(line);
 		i++;
 	}

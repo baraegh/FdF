@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:25:42 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 01:31:47 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/05 01:31:17 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@
 # define Z_COLOR			0xEEE6CE
 
 void	read_file(t_data *data, char *file_path);
+void	check_line(char *line, int fd);
 int		display(t_data data, char* file_path);
 int 	render(t_data *data);
-void	img_pix_put(t_img *img, t_point p, int color);
-int		handle_mouse(int x, int y, void *data);
-void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p);
 void	render_map(t_data *data);
 int		get_color(t_point b_p, t_point e_p);
-void	terminate(char *msg);
-void	free_arr(char **arr, char *msg);
-void	check_line(char *line, int fd);
-void	free_z_matrix(char ***matrix, char *line);
+int		hex_to_int(char *hex);
+void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p);
+void	img_pix_put(t_img *img, t_point p, int color);
 void	hooks(int (*render)(t_data *), t_data data);
 void	zoom(int key_code, t_data *data);
+void	terminate(char *msg);
+void	free_arr(char **arr, char *msg);
+void	free_matrix(char ***matrix, char *line);
+void	free_data(t_data *data, char *msg);
 
 #endif
