@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:19 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 03:18:34 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:17:13 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_point	get_point(t_data *data, int x, int y, char *s)
 {
-	t_point p;
+	t_point	p;
 
 	data->str = NULL;
 	p.x = x;
@@ -39,22 +39,22 @@ t_point	get_point(t_data *data, int x, int y, char *s)
 
 void	draw_h(t_data *data, int x, int y)
 {
-	t_point p1;
-	t_point p2;
+	t_point	p1;
+	t_point	p2;
 
 	p1 = get_point(data, x, y, data->z_matrix[y][x]);
 	p2 = get_point(data, x + 1, y, data->z_matrix[y][x + 1]);
-	draw_line_bresenham(data, p1 , p2);
+	draw_line_bresenham(data, p1, p2);
 }
 
 void	draw_v(t_data *data, int x, int y)
 {
-	t_point p1;
-	t_point p2;
+	t_point	p1;
+	t_point	p2;
 
 	p1 = get_point(data, x, y, data->z_matrix[y][x]);
 	p2 = get_point(data, x, y + 1, data->z_matrix[y + 1][x]);
-	draw_line_bresenham(data, p1 , p2);
+	draw_line_bresenham(data, p1, p2);
 }
 
 void	render_map(t_data *data)

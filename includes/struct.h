@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:00 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 03:36:33 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:02:58 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,13 @@ typedef struct s_point
 
 typedef struct s_var
 {
-	int dx;
-	int dy;
-	int step_x;
-	int step_y;
+	int		dx;
+	int		dy;
+	int		step_x;
+	int		step_y;
+	int		err;
+	int		err_i;
+	t_point	p;
 }	t_var;
 
 typedef struct s_rgb

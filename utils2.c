@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 01:23:38 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 03:42:31 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:18:29 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	zoom(int key_code, t_data *data)
 {
-	if (key_code  == KEY_PLUS)
+	if (key_code == KEY_PLUS)
 		data->view.zoom++;
 	else
 		data->view.zoom--;
@@ -30,9 +30,9 @@ void	move_map(int key_code, t_data *data)
 	else if (key_code == KEY_DOWN)
 		data->view.y_offset += 10;
 	else if (key_code == KEY_RIGHT)
-		data->view.x_offset+= 10;
+		data->view.x_offset += 10;
 	else
-		data->view.x_offset-= 10;
+		data->view.x_offset -= 10;
 	render_map(data);
 }
 
@@ -53,7 +53,7 @@ void	rotate_map(int key_code, t_data *data)
 	render_map(data);
 }
 
-void	set_project(int	key_code, t_data *data)
+void	set_project(int key_code, t_data *data)
 {
 	if (key_code == KEY_P)
 		data->view.proj = PARALLEL;
