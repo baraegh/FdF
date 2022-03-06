@@ -6,17 +6,11 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:19 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/05 01:36:40 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:18:34 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	isometric_proj(t_point	*p)
-{
-	p->x = (p->x - p->y) * cos(0.8);
-	p->y = (p->x + p->y) * sin(0.8) - p->z;
-}
 
 t_point	get_point(t_data *data, int x, int y, char *s)
 {
@@ -38,12 +32,8 @@ t_point	get_point(t_data *data, int x, int y, char *s)
 	}
 	else
 		p.z = ft_atoi(s);
-	p.x *= data->zoom;
-	p.y *= data->zoom;
-	p.z *= data->zoom;
-	isometric_proj(&p);
-	p.x += WIDTH / 2;
-	p.y += HEIGHT / 3;
+	p.org_z = p.z;
+	project(&p, data);
 	return (p);
 }
 

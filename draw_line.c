@@ -32,26 +32,28 @@ void	draw_line_bresenham(t_data *data, t_point b_p, t_point e_p)
 	t_var	var;
 	int		err;
 	int		err_i;
+	t_point	p;
 
 	var = set_values(&b_p, &e_p);
 	err = var.dx + var.dy;
+	p = b_p;
 	while (1)
 	{
-		img_pix_put(&data->img, b_p, get_color(b_p, e_p));
+		img_pix_put(&data->img, p, get_color(b_p, e_p, p));
 		err_i = 2 * err;
 		if (err_i >= var.dy)
 		{
-			if (b_p.x == e_p.x)
+			if (p.x == e_p.x)
 				break ;
 			err += var.dy;
-			b_p.x += var.step_x;
+			p.x += var.step_x;
 		}
 		if (err_i <= var.dx)
 		{
-			if (b_p.y == e_p.y)
+			if (p.y == e_p.y)
 				break ;
 			err += var.dx;
-			b_p.y += var.step_y;
+			p.y += var.step_y;
 		}
 	}
 }

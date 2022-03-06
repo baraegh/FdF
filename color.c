@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:58:46 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/05 01:06:15 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 21:23:20 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,51 @@ int	hex_to_int(char *hex)
 	return (color);
 }
 
-int	get_color(t_point b_p, t_point e_p)
+int	set_color(t_point p)
 {
-	(void) e_p;
-
-	if (b_p.z != 0 && b_p.color_is_set == 0)
+	if (p.color_is_set == 1)
+		return (p.color);
+	else if (p.org_z != 0)
 		return (Z_COLOR);
-	else if (b_p.color_is_set == 1)
-		return (b_p.color);
 	else
 		return (DEFAULT_COLOR);
+}
+
+double	percent(int	start, int end, int current)
+{
+	double	placement;
+	double	distance;
+
+	placement = current - start;
+	distance = end - start;
+	return ((distance == 0) ? 1.0 : (placement / distance));
+}
+
+int	get_gradient(int start, int end, double percentage)
+{
+	return ((int)((1 - percentage) * start + percentage * end));
+}
+
+int	get_color(t_point b_p, t_point e_p, t_point c_p)
+{
+	double	percentage;
+	int		red;
+	int		green;
+	int		blue;
+
+	b_p.color = set_color(b_p);
+	e_p.color = set_color(e_p);
+	if (b_p.color == e_p.color)
+		return (b_p.color);
+	if (abs(b_p.x - e_p.x) > abs(b_p.y - e_p.y))
+		percentage = percent(b_p.x, e_p.x, c_p.x);
+	else
+		percentage = percent(b_p.y, e_p.y, c_p.y);
+	red = get_gradient((b_p.color >> 16) & 0xFF,
+						(e_p.color >> 16) & 0xFF, percentage);
+	green = get_gradient((b_p.color >> 8) & 0xFF,
+						(e_p.color >> 8) & 0xFF, percentage);
+	blue = get_gradient(b_p.color & 0xFF,
+						e_p.color & 0xFF, percentage);
+	return ((red << 16) | (green << 8) | blue);
 }
