@@ -1,8 +1,0 @@
-# function check_file()
-
-# understand the endian
-
-# while (get_next_line(fd) != NULL)
-        line++;
-    (memory leaks)
-
