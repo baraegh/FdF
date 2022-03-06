@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:26:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/05 01:14:22 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:40:49 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ int	handle_keypress(int key_code, t_data *data)
 		close_window(data);
 	else if (key_code == KEY_PLUS || key_code == KEY_MINUS)
 		zoom(key_code, data);
+	else if (key_code == KEY_UP || key_code == KEY_DOWN
+		|| key_code == KEY_LEFT || key_code == KEY_RIGHT)
+		move_map(key_code, data);
+	else if (key_code == KEY_PAD_1 || key_code == KEY_PAD_2
+			|| key_code == KEY_PAD_3 || key_code == KEY_PAD_4
+			|| key_code == KEY_PAD_6 || key_code == KEY_PAD_8)
+		rotate_map(key_code, data);
+	else if (key_code == KEY_P || key_code == KEY_I)
+		set_project(key_code, data);
 	return (1);
 }
 

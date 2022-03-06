@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:13 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/05 01:20:43 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 00:16:43 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,11 @@ char	***set_matrix(char * file_path, t_data *data)
 void	read_file(t_data *data, char *file_path)
 {
 	get_heigth_width(data, file_path);
-	data->zoom = FT_MIN(WIDTH / data->map.width / 2,
-		HEIGHT / data->map.heigth / 2);
 	if (!set_matrix(file_path, data))
 		terminate(ERR_SET_MATRIX);
+	data->view.x_offset = 0;
+	data->view.y_offset= 0;
+	data->view.zoom = FT_MIN(WIDTH / data->map.width / 2,
+		HEIGHT / data->map.heigth / 2);
+	view_init(data);
 }

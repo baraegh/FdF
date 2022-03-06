@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:00 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/05 01:06:52 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/06 03:36:33 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,24 @@ typedef struct s_map
 {
 	int	width;
 	int	heigth;
-} t_map;
+}	t_map;
+
+typedef struct s_view
+{
+	char	proj;
+	int		zoom;
+	int		x_offset;
+	int		y_offset;
+	double	x_teta;
+	double	y_teta;
+	double	z_teta;
+}	t_view;
 
 typedef struct s_data
 {
 	t_map	map;
+	t_view	view;
 	char	***z_matrix;
-	int		zoom;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
@@ -46,9 +57,10 @@ typedef struct s_point
 	int	x;
 	int	y;
 	int	z;
+	int	org_z;
 	int	color;
 	int	color_is_set;
-} t_point;
+}	t_point;
 
 typedef struct s_var
 {
@@ -56,13 +68,13 @@ typedef struct s_var
 	int dy;
 	int step_x;
 	int step_y;
-} t_var;
+}	t_var;
 
 typedef struct s_rgb
 {
 	int	r;
 	int	g;
 	int	b;
-} t_rgb;
+}	t_rgb;
 
 # endif
