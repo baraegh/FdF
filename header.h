@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:25:42 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 22:10:11 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:55:59 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	rotate_z(int *x, int *y, double teta);
 void	rotate_map(int key_code, t_data *data);
 void	project(t_point *p, t_data *data);
 void	set_project(int key_code, t_data *data);
+int		ft_min(int a, int b);
 
 #endif

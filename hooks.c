@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:26:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 22:11:51 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:53:19 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	handle_keypress(int key_code, t_data *data)
 void	hooks(int (*render)(t_data *), t_data data)
 {
 	mlx_loop_hook(data.mlx_ptr, render, &data);
-	mlx_hook(data.win_ptr, EVENT_KEY_PRESS, KEY_PRESS_MASK,
+	mlx_hook(data.win_ptr, EVENT_KEY_PRESS, 0,
 		&handle_keypress, &data);
 	mlx_hook(data.win_ptr, EVENT_CLOSE, 0, &close_window, &data);
 }

@@ -6,16 +6,14 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:06 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/03 00:49:17 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:53:47 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MLX_KEYS_H
-# define FT_MLX_KEYS_H
+#ifndef MLX_KEYS_H
+# define MLX_KEYS_H
 
-/*
-**	Defining Event ID's
-*/
+// Defining Event ID's
 
 # define EVENT_KEY_PRESS 2
 # define EVENT_KEY_RELEASE 3
@@ -25,9 +23,7 @@
 # define EVENT_EXPOSE 12
 # define EVENT_CLOSE 17
 
-/*
-** Defining Mouse Button Codes
-*/
+// Defining Mouse Button Codes
 
 # define MOUSE_LEFT_BUTTON 1
 # define MOUSE_RIGHT_BUTTON 2
@@ -37,33 +33,9 @@
 # define MOUSE_SCROLL_LEFT 6
 # define MOUSE_SCROLL_RIGHT 7
 
-/*
-**	Definine Some KeyboardKeyCodes
-*/
-
-# define NO_EVENT_MASK 0L
-# define KEY_PRESS_MASK (1L<<0)
-# define KEY_RELEASE_MASK (1L<<1)
-# define BUTTON_PRESS_MASK (1L<<2)
-# define BUTTON_RELESE_MASK (1L<<3)
-
-/*
-**	Definine Some KeyboardKeyCodes
-*/
+//Definine Some KeyboardKeyCodes
 
 # define KEY_ESC 53
-# define KEY_F1 122
-# define KEY_F2 120
-# define KEY_F3 99
-# define KEY_F4 118
-# define KEY_F5 96
-# define KEY_F6 97
-# define KEY_F7 98
-# define KEY_F8 100
-# define KEY_F9 101
-# define KEY_F10 109
-# define KEY_F11 103
-# define KEY_F12 111
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_LEFT 123

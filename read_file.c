@@ -6,7 +6,7 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:27:13 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 22:13:29 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:45:49 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	read_file(t_data *data, char *file_path)
 		terminate(ERR_SET_MATRIX);
 	data->view.x_offset = 0;
 	data->view.y_offset = 0;
-	data->view.zoom = FT_MIN(WIDTH / data->map.width / 2,
+	data->view.zoom = ft_min(WIDTH / data->map.width / 2,
 			HEIGHT / data->map.heigth / 2);
 	view_init(data);
 }

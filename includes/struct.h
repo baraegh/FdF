@@ -6,20 +6,18 @@
 /*   By: eel-ghan <eel-ghan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:28:00 by eel-ghan          #+#    #+#             */
-/*   Updated: 2022/03/06 22:02:58 by eel-ghan         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:44:43 by eel-ghan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define FT_MIN(A, B) (((A) < (B)) ? (A) : (B))
-
 typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
-	int		bpp; /* bits per pixel */
+	int		bpp;
 	int		line_len;
 	int		endian;
 }	t_img;
@@ -80,4 +78,4 @@ typedef struct s_rgb
 	int	b;
 }	t_rgb;
 
-# endif
+#endif
